@@ -1,0 +1,400 @@
+/***********************************************************************************************************
+* File System using Ajax, Jquery and PHP v4.0 
+* Written by Vasplus Programming Blog
+* Website: www.vasplus.info
+* Email: info@vasplus.info
+
+**********************************Copyright Information*****************************************************
+* This script has been released with the aim that it will be useful.
+* Please, do not remove this copyright information from the top of this page 
+  including the Powered by Vasplus Programming Blog Icon.
+* If you want the copyright info including the Powered by Vasplus Programming Blog icon 
+  to be removed from the script then you have to buy this script.
+* This script must not be used for commercial purpose without the consent of Vasplus Programming Blog.
+* This script must not be sold.
+* All Copy Rights Reserved by Vasplus Programming Blog
+*************************************************************************************************************/
+
+
+/* Upload browse button Style */
+.vpb_browse_file_box { font-weight:bold; font-size:12px;font-family:Arial, Helvetica, sans-serif;text-align:center;background: url('../default_system_files/browse_file_by_vasplus_programming_blog.png') no-repeat;height:46px;cursor: default;width:133px;float:left;}
+.vpb_file_browsing_field {opacity:0;-moz-opacity:0;filter:alpha(opacity:0);width:133px; height:33px;cursor: pointer;}
+
+
+#vpb_file_system_main_wrapper 
+{
+	width: 850px;
+	margin: 0 auto;
+	border: solid 1px #cbcbcb;
+	 background-color: #00FFFF;
+	 box-shadow: 0 0 15px #cbcbcb;
+	-moz-box-shadow: 0 0 15px #cbcbcb;
+	-webkit-box-shadow: 0 0 15px #cbcbcb;
+}
+
+.vpb_file_system_main_wrapper 
+{
+	width: 850px;
+	min-height:400px;
+	height:auto;
+	margin: 0 auto;
+	border: solid 1px #cbcbcb;
+	 background-color: #FFF;
+	 box-shadow: 0 0 15px #cbcbcb;
+	-moz-box-shadow: 0 0 15px #cbcbcb;
+	-webkit-box-shadow: 0 0 15px #cbcbcb;
+}
+
+#vpb_file_system_displayer_container 
+{
+	padding: 10px;
+	margin: 0 auto;
+}
+
+#vpb_file_system_displayer_header 
+{
+	color: #000;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size:11px;
+	text-align:right;
+}
+
+#vpb_header_file_names 
+{
+	text-align:left;
+	height:20px;
+	float: left;
+	width: 465px;
+	padding:5px;
+	padding-top:4px;
+	padding-bottom:1px;
+	border:1px solid #CCC;
+	background:#C0C0C0;
+	box-shadow: 0 0 15px #cbcbcb;
+	-moz-box-shadow: 0 0 15px #cbcbcb;
+	-webkit-box-shadow: 0 0 15px #cbcbcb;
+}
+
+#vpb_header_file_size 
+{
+	width: 68px;
+	height:20px;
+	float: left;
+	text-align:center;
+	padding:5px;
+	padding-top:4px;
+	padding-bottom:1px;
+	border:1px solid #CCC;
+	border-left:0px solid #CCC;
+	background:#FFD700;
+	box-shadow: 0 0 15px #cbcbcb;
+	-moz-box-shadow: 0 0 15px #cbcbcb;
+	-webkit-box-shadow: 0 0 15px #cbcbcb;
+}
+
+#vpb_header_file_last_date_modified 
+{
+	width: 141px;
+	height:20px;
+	float: left;
+	text-align:center;
+	padding:5px;
+	padding-top:4px;
+	padding-bottom:1px;
+	border:1px solid #CCC;
+	border-left:0px solid #CCC;
+	background:#FFD700;
+	box-shadow: 0 0 15px #cbcbcb;
+	-moz-box-shadow: 0 0 15px #cbcbcb;
+	-webkit-box-shadow: 0 0 15px #cbcbcb;
+}
+
+#vpb_header_file_actions 
+{
+	text-align:left;
+	width: 110px;
+	height:20px;
+	float: left;
+	text-align:center;
+	padding:5px;
+	padding-top:4px;
+	padding-bottom:1px;
+	border:1px solid #CCC;
+	border-left:0px solid #CCC;
+	background:#FFD700;
+	box-shadow: 0 0 15px #cbcbcb;
+	-moz-box-shadow: 0 0 15px #cbcbcb;
+	-webkit-box-shadow: 0 0 15px #cbcbcb;
+	
+}
+
+#vpb_file_system_displayer { border: 1px solid #A7C5FF; }
+
+#vpb_file_system_displayer a 
+{
+	display:block;
+	font-size:small;
+	color: black;
+	font-family:Arial, Helvetica, sans-serif;
+	text-decoration:none;
+	width:785px;
+	text-align:left;
+}
+
+.hove_this_link:hover 
+{
+	background-color:#DBE6FE;
+}
+
+#vpb_file_system_displayer a img 
+{
+	float:left;
+	margin-right: 4px;
+	border:0px;
+}
+
+#vpb_files_left {
+	width: 460px;
+	float:left;
+	cursor:pointer;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;
+	text-align:left;
+	padding:8px;
+	height:16px;
+	border-right:1px solid #CCC;
+}
+
+#vpb_files_size_left 
+{
+	width: 62px;
+	float: left;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:10px;
+	text-align:left;
+	padding:8px;
+	height:16px;
+	border-right:1px solid #CCC;
+}
+
+#vpb_files_time_left 
+{
+	width: 135px;
+	float: left;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:10px;
+	text-align:left;
+	padding:8px;
+	height:16px;
+	border-right:1px solid #CCC;
+}
+
+#vpb_files_acttions_left 
+{
+	width: 60px;
+	float: left;
+	cursor:hand;
+	cursor:pointer;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;
+	text-align:center;
+	padding:8px;
+	height:16px;
+	color: #60C;	
+}
+
+.vpb_files_acttions_left_hover:hover 
+{
+	text-decoration:underline;
+	color:blue;	
+}
+
+.vpb_blue { background-color: #E9F0FF; }
+.vpb_white { background-color:#FFFFFF; }
+
+
+
+
+
+
+/*General Pop-up Background*/
+#vpb_file_system_background
+{
+	display:none;
+	_position:absolute; /* hack for internet explorer 6*/
+	height:100%;
+	width:100%;
+	top:0;
+	left:0;
+	background:#000000;
+	border:1px solid #cecece;
+	position:fixed;
+	z-index:99999999;
+}
+
+
+/*Directory Options Box*/
+#vpb_directory_options_box
+{
+	display:none;
+	width:550px;
+	border: solid 1px #000;
+	background-color: #FFF;
+	box-shadow: 0 0 20px #000;
+	-moz-box-shadow: 0 0 20px #000;
+	-webkit-box-shadow: 0 0 20px #000;
+	-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;
+	padding:10px;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;
+	top: 20%; 
+	right: 28%; 
+	position:fixed;
+	z-index:9999999999;
+}
+
+/*File Options Box*/
+#vpb_file_options_box
+{
+	display:none;
+	width:420px;
+	border: solid 1px #000;
+	background-color: #FFF;
+	box-shadow: 0 0 20px #000;
+	-moz-box-shadow: 0 0 20px #000;
+	-webkit-box-shadow: 0 0 20px #000;
+	-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;
+	padding:10px;
+	padding-left:20px;
+	padding-right:20px;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;
+	top: 20%; 
+	right: 30%; 
+	position:fixed;
+	z-index:9999999999;
+}
+
+
+/*Info Style*/
+#vpb_top_menu{font-family:Verdana, Geneva, sans-serif; font-size:11px; padding:8px; background: #ECE2C0; border:0px solid #F1F1F1;-webkit-border-radius: 0px;-moz-border-radius: 0px;border-radius: 0px; line-height:18px;}
+
+
+/*Style Links*/
+.ccc A:link {text-decoration: none}
+.ccc A:visited {text-decoration: none}
+.ccc A:active {text-decoration: none}
+.ccc A:hover {text-decoration:underline; font: Arial, Helvetica, sans-serif;color: blue;} 
+
+/*Attach file button*/
+.aadileds{ font-weight:bold; font-size:12px;font-family:Arial, Helvetica, sans-serif;text-align:center;background:#f2f2f2 url('../default_system_images/addfile.png') no-repeat 12px 9px;color:green;border:1px solid #ccc;height:30px;cursor: default;width:106px;-moz-border-radius:5px; -webkit-border-radius:5px;float:left; }
+
+
+/*Textarea Boxes and Input Boxes Style*/
+.vpb_textAreaBoxInputs { width:300px;height:20px;font-family:Verdana, Geneva, sans-serif; font-size:12px;padding:5px; padding-left:5px; padding-right:10px;border: 1px solid #6CF;outline:none;border-radius: 2px;-moz-border-radius: 2px;-webkit-border-radius:2px; line-height:20px;padding-right:0px; padding-bottom:5px;}
+.vpb_textAreaBoxInputs:focus {outline:none;border: 1px solid #6CF;box-shadow: 0 0 10px #6AB5FF;-moz-box-shadow: 0 0 10px #6AB5FF;-webkit-box-shadow: 0 0 10px #6AB5FF;}
+
+
+/*Error Message Style*/
+.info { border: 1px solid #999; padding:8px; font: bold 12px verdana;-moz-box-shadow: 0 0 5px #888; -webkit-box-shadow: 0 0 5px#888;box-shadow: 0 0 5px #888;text-shadow: 2px 2px 2px #ccc;-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px;font-family:Verdana, Geneva, sans-serif; font-size:11px; line-height:20px;font-weight:normal;color: black;background: #BDE5F8;}
+
+
+/*Vasplus Button*/
+.vpb_general_button 
+{
+ background-color: #7fbf4d;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #7fbf4d), color-stop(100%, #63a62f));
+  background-image: -webkit-linear-gradient(top, #7fbf4d, #63a62f);
+  background-image: -moz-linear-gradient(top, #7fbf4d, #63a62f);
+  background-image: -ms-linear-gradient(top, #7fbf4d, #63a62f);
+  background-image: -o-linear-gradient(top, #7fbf4d, #63a62f);
+  background-image: linear-gradient(top, #7fbf4d, #63a62f);
+  -webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;
+  border: 1px solid #63a62f;box-shadow: 0 2px 3px #666666;-moz-box-shadow: 0 2px 3px #666666;-webkit-box-shadow: 0 2px 3px #666666;
+  color: #fff;
+  font-family:Verdana, Geneva, sans-serif;
+  font-size:12px;
+  text-align: center;
+  text-shadow: 0 -1px 0 #4c9021;
+  min-width: 70px;
+  width: auto;
+  padding:8px;padding-left:12px; padding-right:12px;
+  text-decoration:none;
+  margin-right:30px;
+}
+.vpb_general_button:hover 
+{
+    background-color: #76b347;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #76b347), color-stop(100%, #5e9e2e));
+    background-image: -webkit-linear-gradient(top, #76b347, #5e9e2e);
+    background-image: -moz-linear-gradient(top, #76b347, #5e9e2e);
+    background-image: -ms-linear-gradient(top, #76b347, #5e9e2e);
+    background-image: -o-linear-gradient(top, #76b347, #5e9e2e);
+    background-image: linear-gradient(top, #76b347, #5e9e2e);
+    box-shadow: 0 2px 3px #666666;
+	-moz-box-shadow: 0 2px 3px #666666;
+	-webkit-box-shadow: 0 2px 3px #666666;
+    cursor: pointer; 
+}
+
+
+
+.vpb_general_button_red {
+
+  background-color: #ee432e;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ee432e), color-stop(50%, #c63929), color-stop(50%, #b51700), color-stop(100%, #891100));
+  background-image: -webkit-linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+  background-image: -moz-linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+  background-image: -ms-linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+  background-image: -o-linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+  background-image: linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+  border: 1px solid #951100;box-shadow: 0 2px 3px #951100;-moz-box-shadow: 0 2px 3px #951100;-webkit-box-shadow: 0 2px 3px #951100;
+ -webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;
+  -webkit-box-shadow: inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
+  box-shadow: inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
+  color: #fff;
+  font-family:Verdana, Geneva, sans-serif;
+  font-size:14px;
+  text-align: center;
+  text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.8);
+  width: auto;
+  padding:8px;
+  padding-left:12px; padding-right:12px;
+  text-decoration:none;
+}
+.vpb_general_button_red:hover 
+{
+    background-color: #f37873;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f37873), color-stop(50%, #db504d), color-stop(50%, #cb0500), color-stop(100%, #a20601));
+    background-image: -webkit-linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+    background-image: -moz-linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+    background-image: -ms-linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+    background-image: -o-linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+    background-image: linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+    cursor: pointer; 
+}
+
+
+input#file_system_search {
+	padding:50px 100px; font:12px Verdana, Geneva, sans-serif; 
+	padding-left: 30px;
+	padding-right:10px;
+	padding-top:7px;
+	padding-bottom:8px;
+	font: normal 12px Verdana, Tahoma, sans-serif;
+	outline: 0;
+    transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    border-radius: 5px 0px 0px 5px;-webkit-border-radius:5px 0px 0px 5px;-moz-border-radius:5px 0px 0px 5px;
+    border:1px solid rgba(0,0,0, 0.2);
+	background: url(../default_system_files/search.gif) no-repeat 1px 4px;
+	width: 140px;
+	border: 1px solid #C9C9C9
+
+}	
+
+
+input#file_system_search:focus { 
+outline:none;border: 1px solid #6CF;box-shadow: 0 0 10px #6AB5FF;-moz-box-shadow: 0 0 10px #6AB5FF;-webkit-box-shadow: 0 0 10px #6AB5FF;
+}
